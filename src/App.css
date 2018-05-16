@@ -1,0 +1,98 @@
+.App {
+  text-align: center;
+}
+body {
+  position: relative;
+}
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.container {
+  width: 1000px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+.list {
+  width: 300px;
+  background: #33ceaf;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  height: 400px;
+}
+.list_filter {
+
+}
+.list .list_items {
+  overflow-y: auto;
+  height: 320px;
+}
+.list_item {
+  padding: 10px;
+  box-sizing: border-box;
+  height: 70px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: all 0.3s linear;
+  border-radius: 2px;
+  border: 2px solid rgba(0,0,0,0);
+}
+.list_item.active {
+  border: 2px solid #6e101f;
+  box-shadow: inset 0px 0px 2px 1px #6e101f;
+}
+.list_container {
+  overflow-y: scroll;
+}
+.info {
+  width: 200px;
+}
+.draggable_item {
+  margin-bottom: 15px;
+  position: relative;
+  background: #FFF;
+}
+.draggable_item-drag {
+  position: absolute;
+  width: 100%;
+  z-index: 9999;
+}
+.draggable_item.active {
+}
+.draggable_item.draggabled {
+  opacity: 0.7;
+  box-shadow: inset 0 0 2px 2px #222222;
+}
+.draggable_item.hovered {
+  display: none;
+}
+.draggable_item.removed {
+  display: none;
+}
+.draggable_layer {
+  height: auto;
+}

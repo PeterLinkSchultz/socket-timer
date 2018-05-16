@@ -1,0 +1,167 @@
+
+@margin-list-container: 20px;
+@padding-inner: 20px;
+@width-container: 1000px;
+@width-block-container: 300px;
+@width-list-container: @width-block-container - @margin-list-container - 2px;
+@width-list: 260px;
+@height-filter: 50px;
+@height-block: 600px;
+@height-list-container: @height-block - @height-filter - 2 * @padding-inner;
+@item-height: 70px;
+@icon-flash: '../img/icon-flash.png';
+@icon-heart: '../img/icon-heart.png';
+@icon-flower: '../img/icon-flower.png';
+@icon-sun: '../img/icon-sun.png';
+@color-active: #821111;
+@color-drag: #222;
+@icon-size: 30px;
+@list-container-size: 300px;
+@opacity-hidden: 0.7;
+.transition() {
+    transition: all 0.3s linear;
+}
+.flex() {
+    display: flex;
+    display: -webkit-box; 
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex; 
+}
+.box-shadow(@inset: "", @left: 0px, @top: 0px, @size: 0px, @shadow: 0px, @color) {
+    box-shadow: @inset @left @top @size @shadow @color;
+    -webkit-box-shadow: @inset @left @top @size @shadow @color;
+}
+.box-sizing(@sizing) {
+    box-sizing: @sizing;
+    -moz-box-sizing: @sizing;
+    -webkit-box-sizing: @sizing;
+}
+.container {
+    .flex();
+    width: @width-container;
+    margin: auto;
+    justify-content: space-between;
+    margin-top: 30px;
+  }  
+.list {
+    width: @width-block-container;
+    background: #33ceaf;
+    box-sizing: border-box;
+    border-radius: 6px;
+    height: @height-block;
+    &_container {
+        overflow-y: auto;
+        overflow-x: hidden;
+        width: @width-list-container;
+        height: @height-list-container;
+        margin-left: @margin-list-container;
+    }
+    &_items {
+        
+        width: @width-list;
+    }
+    &_item {
+        .box-sizing(border-box);
+        .transition();
+        padding: 10px;
+        height: @item-height;
+        cursor: pointer;
+        margin-bottom: 15px;
+        border-radius: 2px;
+        border: 2px solid rgba(0,0,0,0);
+        &.active {
+            border: 2px solid @color-active;
+            .box-shadow(@inset: inset, @size: 2px, @shadow: 1px, @color: @color-active);
+        }
+        &_point {
+            background-size: @icon-size;
+            background-position: 50% 50%;
+            width: @icon-size;
+            height: @icon-size;
+            display: inline-block;
+        }
+    }
+    &_filter {
+        padding: @padding-inner @padding-inner 0;
+        height: @height-filter;
+    }
+  }
+  .draggable {
+    &_item {
+        margin: 7px 0;
+        position: relative;
+        background: #FFF;
+        &:last-of-type {
+            //margin-bottom: 0px;
+        }
+        &.draggabled {
+            opacity: @opacity-hidden;
+            .box-shadow(@inset: inset, @size: 2px, @shadow: 2px, @color: @color-drag);
+        }
+    }
+    &_layer {
+        height: auto;
+    }
+  }
+  .info {
+    width: 200px;
+  }
+  .icon {
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+      &-flash {
+        background-image: url(@icon-flash);
+      }
+      &-heart {
+        background-image: url(@icon-heart);
+      }
+      &-flower {
+        background-image: url(@icon-flower);
+      }
+      &-sun {
+        background-image: url(@icon-sun);
+      }
+  }
+  .checker {
+      display: inline-block;
+      margin: 0 4px;      
+      & input {
+          display: none;
+      }
+  }
+  .label {
+    position: relative;
+    cursor: pointer;
+
+    &-icon {
+        width: @icon-size;
+        height: @icon-size;
+        border: 1px solid #fff;
+        border-radius: 4px;
+        display: inline-block;
+        background-size: cover;
+    }
+      input:checked + & {
+        background-color: #fff;
+      }
+      &-default {
+        .flex();
+        width: @icon-size;
+        height: @icon-size;  
+        background-color: #fff;    
+          &:before {
+              content: "";
+              display: block;
+              width: @icon-size / 2;
+              height: @icon-size / 2;       
+              margin: auto;
+              border-radius: 50%;
+              opacity: @opacity-hidden;
+              background-color: @color-active;
+          }
+      }
+      input:checked + &-default:before {
+          opacity: 1;
+      }
+  }

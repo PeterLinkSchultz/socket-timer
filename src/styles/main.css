@@ -1,0 +1,134 @@
+.container {
+  display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  width: 1000px;
+  margin: auto;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+.list {
+  width: 300px;
+  background: #33ceaf;
+  box-sizing: border-box;
+  border-radius: 6px;
+  height: 600px;
+}
+.list_container {
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 278px;
+  height: 510px;
+  margin-left: 20px;
+}
+.list_items {
+  width: 260px;
+  min-height: 510px;
+}
+.list_item {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  transition: all 0.3s linear;
+  padding: 10px;
+  height: 70px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  border-radius: 2px;
+  border: 2px solid rgba(0, 0, 0, 0);
+}
+.list_item.active {
+  border: 2px solid #821111;
+  box-shadow: inset 0px 0px 2px 1px #821111;
+  -webkit-box-shadow: inset 0px 0px 2px 1px #821111;
+}
+.list_item_point {
+  background-size: 30px;
+  background-position: 50% 50%;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+}
+.list_filter {
+  padding: 20px 20px 0;
+  height: 50px;
+}
+.draggable_item {
+  margin: 7px 0;
+  position: relative;
+  background: #FFF;
+}
+.draggable_item.draggabled {
+  opacity: 0.7;
+  box-shadow: inset 0px 0px 2px 2px #222;
+  -webkit-box-shadow: inset 0px 0px 2px 2px #222;
+}
+.draggable_layer {
+  height: auto;
+}
+.info {
+  width: 200px;
+}
+.icon {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+.icon-flash {
+  background-image: url('../img/icon-flash.png');
+}
+.icon-heart {
+  background-image: url('../img/icon-heart.png');
+}
+.icon-flower {
+  background-image: url('../img/icon-flower.png');
+}
+.icon-sun {
+  background-image: url('../img/icon-sun.png');
+}
+.checker {
+  display: inline-block;
+  margin: 0 4px;
+}
+.checker input {
+  display: none;
+}
+.label {
+  position: relative;
+  cursor: pointer;
+}
+.label-icon {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  display: inline-block;
+  background-size: cover;
+}
+input:checked + .label {
+  background-color: #fff;
+}
+.label-default {
+  display: flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  width: 30px;
+  height: 30px;
+  background-color: #fff;
+}
+.label-default:before {
+  content: "";
+  display: block;
+  width: 15px;
+  height: 15px;
+  margin: auto;
+  border-radius: 50%;
+  opacity: 0.7;
+  background-color: #821111;
+}
+input:checked + .label-default:before {
+  opacity: 1;
+}
