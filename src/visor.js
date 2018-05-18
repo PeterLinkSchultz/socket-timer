@@ -25,9 +25,9 @@ $(document).ready(function() {
         timer = new Timer(),
         banner = new Banner();
 
-    socket.on('connect', (socket) => {
+   socket.on('connect', (socket) => {
         console.log('connected');
-    });
+   });
    socket.on('timer:start', () => {
        timer.start();
    });
@@ -38,11 +38,14 @@ $(document).ready(function() {
    socket.on('timer:stop', () => {
         timer.stop();
    });
+   socket.on('timer:current', () =>{
+      socket.emit('timer:time', { time: timer.getTime(), started: timer.isStarted() });
+   });
    socket.on('info:set', (data) => {
        let audio = new Audio(); // Создаём новый элемент Audio
        audio.src = 'signal.mp3'; // Указываем путь к звуку "клика"
        audio.autoplay = true;
        console.log('info: set', data);
-        banner.setInfo(data.text);
+       banner.setInfo(data.text);
    });
 });

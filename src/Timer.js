@@ -15,7 +15,13 @@ export const Timer = () => {
         setMinuts();
         setSeconds();
     }
-    init();
+    function setTime(time) {
+        console.log(time);
+        minuts = time.minuts;
+        seconds = time.seconds;
+        setMinuts();
+        setSeconds();
+    }
     function setMinuts () {
         divMinuts.html(minuts);
     }
@@ -23,6 +29,8 @@ export const Timer = () => {
         divSeconds.html(seconds);
     }
     function tick () {
+        const date = new Date();
+        console.log(date.getSeconds(), date.getMilliseconds());
         if ( Number(seconds) === 0 ) {
             if ( Number(minuts) > 0 ) {
                 seconds = 59;
@@ -40,7 +48,9 @@ export const Timer = () => {
         if ( seconds < 10)
             seconds = '0'+seconds;
         setSeconds();
-        timer = setTimeout(tick, 1000);
+        if ( seconds === 0 && minuts === 0 )
+            stop();
+        //timer = setTimeout(tick, 1000);
     }
     function toString () {
         return `${minuts}:${seconds}`;
@@ -48,12 +58,17 @@ export const Timer = () => {
     function start () {
         if ( !started ) {
             started = true;
-            timer = setTimeout(tick, 1000);
+            timer = setInterval(tick, 1000);
+            //timer = setTimeout(tick, 1000);
         }
+    }
+    function isStarted () {
+        return started;
     }
     function stop () {
         started = false;
-        clearTimeout(timer);
+        clearInterval(timer);
+        //clearTimeout(timer);
     }
     function reset () {
         init();
@@ -64,11 +79,14 @@ export const Timer = () => {
             seconds
         }
     }
+    init();
     return {
         start,
         stop,
         reset,
         getTime,
+        setTime,
+        isStarted,
         toString
     }
 };

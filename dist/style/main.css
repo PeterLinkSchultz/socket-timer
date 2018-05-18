@@ -1,9 +1,19 @@
+html {
+  height: 100%;
+}
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  height: 100%;
+}
+.main {
+  min-height: 100%;
+  height: 100%;
+  background: #000;
 }
 .container {
+  position: relative;
   width: 1000px;
   margin: auto;
 }
@@ -14,18 +24,23 @@ body {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 .timer p {
   margin: auto;
   font-size: 60px;
+  font-family: 'SF Digital Readout';
 }
 .timer-big {
   width: 400px;
 }
 .timer-big p {
   font-size: 100px;
+}
+.timer-red p{
+  color: #de000c;
+  font-size: 130px;
 }
 .timer-control {
   width: 200px;
@@ -50,17 +65,19 @@ body {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   margin: 0 0 25px;
   padding: 0;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 #info ul li {
   cursor: pointer;
   width: 200px;
-  height: 100px;
   padding: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -68,12 +85,19 @@ body {
   margin-right: 25px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   border: 1px solid #ccc;
+}
+#info #rooms li,
+#info #objects li{
+  height: 20px;
+}
+#info #objects li {
+  margin-bottom: 10px;
 }
 #confirm {
   position: fixed;
@@ -85,8 +109,8 @@ body {
   display: none;
   z-index: 10;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 #confirm.active {
   display: -webkit-box;
@@ -109,12 +133,51 @@ body {
   min-height: 300px;
   margin: 200px auto 0;
   padding: 10px;
-  border: 1px solid #ccc;
   text-align: center;
   font-size: 30px;
   display: none;
+  font-family: 'Nosifer', cursive;
+  color: #fff;
 }
 #banner.active {
   display: block;
+}
+#logger {
+  width: 100%;
+  height: 150px;
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  overflow-y: auto;
+}
+.logger {
+  width: 100%;
+  text-align: center;
+}
+#lang {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 100px;
+}
+.lang-cont {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100px;
+}
+.lang {
+  width: 40px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+.lang.active {
+  -webkit-box-shadow: inset 0 0 3px 1px red;
+          box-shadow: inset 0 0 3px 1px red;
 }
 /*# sourceMappingURL=main.css.map*/

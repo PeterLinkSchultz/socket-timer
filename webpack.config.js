@@ -16,7 +16,7 @@ module.exports = {
     devtool: "source-map",
     entry: "./src/admin.js",
     mode: "development",
-    watch: true,
+    watch: false,
     output: {
         path: __dirname + "/dist/js",
         filename: "admin.js"

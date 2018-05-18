@@ -4,13 +4,15 @@ import { Timer } from './Timer.js';
 
 import './index.css';
 
-function Tree () {
+function Tree (_addLog) {
     let tree,
+        data = {},
         rooms = $("#rooms"),
         objects = $("#objects"),
         secrets = $("#secrets"),
         currentRoom,
         _socket,
+        addLog = _addLog,
         _timer,
         currentObject,
         currentSecret,
@@ -20,8 +22,13 @@ function Tree () {
         _socket = socket;
         return this;
     }
-    function setData(data) {
-        tree = data;
+    function setData(lang) {
+        tree = data[lang];
+        renderRooms();
+        return this;
+    }
+    function loadData(_data, lang) {
+        data[lang] = _data;
         return this;
     }
     function setRoom (key) {
@@ -39,7 +46,7 @@ function Tree () {
             chain: currentRoom.name+" "+currentObject.name+" "+currentSecret.name,
             text: currentSecret.text,
             timer: _timer.toString(),
-            time: `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+            time: `${date.toTimeString().substr(0,9)}`
         };
         Confirm( setMessage, current );
     }
@@ -47,16 +54,21 @@ function Tree () {
         if ( error ) {
             console.log('reject');
         } else {
+            addLog(success);
             _socket.emit('info:set', success);
         }
     }
     function renderRooms () {
+        objects.html("");
+        secrets.html("");
+        rooms.html("");
         tree.forEach( (item, key) => {
             Room(item, rooms, setRoom, key);
         });
     }
     function renderObject () {
         objects.html("");
+        secrets.html("");
         currentRoom.tree.forEach( (item, key) => {
             Room(item, objects, setObject, key);
         });
@@ -74,6 +86,7 @@ function Tree () {
     return {
         renderRooms,
         setData,
+        loadData,
         setSocket,
         setTimer
     };
@@ -122,18 +135,110 @@ function Confirm (callback, info) {
     }
     render();
 }
+
+function Logger(_root) {
+    let root = _root,
+        logs = [],
+        table = $('<table class="logger">'),
+        thead = $('<thead>'),
+        tbody = $('<tbody>');
+
+    function printLog() {
+        const log = logs[0];
+        const tr = $('<tr>');
+        tr.append(`<td>${log.time}</td><td>${log.timer}</td><td>${log.chain}</td>`);
+        tbody.prepend(tr);
+    }
+
+    function addLog(log) {
+        logs.unshift(log);
+        printLog();
+    }
+
+    function clearLog() {
+        tbody.html('');
+    }
+
+    const render = function () {
+        thead.append('<tr><th>Time</th><th>Timer</th><th>Chain</th></tr>');
+        table.append(thead);
+        table.append(tbody);
+        root.append(table);
+    }();
+
+    return {
+        clearLog,
+        addLog
+    }
+}
+function Lang(_root, _lang, _callback, _default) {
+    let root = _root,
+        cont = $('<div class="lang-cont">'),
+        lang = _lang,
+        current = _default,
+        buttons = [],
+        callback = _callback;
+
+    function render() {
+        cont.html("");
+        lang.forEach( (item) => {
+           const button = $(`<div class="lang">${item}</div>`).click( (e) => {
+               if ( current !== item) {
+                   current = item;
+                   callback(item);
+                   render();
+               }
+           });
+           if ( current === item )
+               button.addClass('active');
+           cont.append(button);
+        });
+    }
+
+    const mount = function() {
+        root.append(cont);
+        render();
+    }();
+
+    return {
+
+    }
+}
 $(document).ready(function() {
     let socket = io(window.location.origin, {
             port: 8080,
             autoConnect: true
         }),
         timer = new Timer(),
-        tree = new Tree();
+        logger = new Logger($('#logger')),
+        tree = new Tree(logger.addLog),
+        lang = new Lang($('#lang'), ['sp', 'en'], tree.setData, 'sp');
 
     tree.setSocket(socket);
     tree.setTimer(timer);
+
     $.getJSON('/data', (data) => {
-       tree.setData(data.rooms).renderRooms();
+       tree.loadData(data.rooms, 'en');
+    });
+    $.getJSON('/data:sp', (data) => {
+        tree.loadData(data.rooms, 'sp');
+        tree.setData('sp');
+    });
+
+    socket.emit('admin:connect');
+    socket.on('timer:setTime', (data) => {
+        const { time, started } = data;
+        timer.setTime(time);
+        if ( started )
+            timer.start();
+    });
+    socket.on('admin:log', (log) => {
+         const logs = log.slice(0, -1);
+         if ( logs.length > 0 ) {
+             logs.split('\n').forEach((item) => {
+                 logger.addLog(JSON.parse(item));
+             });
+         }
     });
 
     $("#start").click(function () {
@@ -146,6 +251,7 @@ $(document).ready(function() {
     });
     $("#reset").click(function () {
         timer.reset();
+        logger.clearLog();
         socket.emit('timer:reset');
     });
     $("#setInfo").click(function () {
