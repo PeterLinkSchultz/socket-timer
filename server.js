@@ -81,6 +81,12 @@ app.get('/*.js', function (req, res) {
 app.get('/*.css', function (req, res) {
     res.sendFile(path.join(__dirname+"/dist/style/"+req.originalUrl));
 });
+app.get('/*.woff', function (req, res) {
+    res.sendFile(path.join(__dirname+"/dist/style/"+req.originalUrl));
+});
+app.get('/*.woff2', function (req, res) {
+    res.sendFile(path.join(__dirname+"/dist/style/"+req.originalUrl));
+});
 app.get('/index', function (req, res) {
    res.sendFile(path.join(__dirname+'/dist/index.html'));
 });
