@@ -254,6 +254,9 @@ $(document).ready(function() {
         logger.clearLog();
         socket.emit('timer:reset');
     });
+    $('#signal').click(function () {
+       socket.emit('timer:signal');
+    });
     $("#setInfo").click(function () {
        socket.emit('info:set', { text: "newText" + new Date()});
     });

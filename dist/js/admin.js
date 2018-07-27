@@ -20155,6 +20155,9 @@ function Lang(_root, _lang, _callback, _default) {
         logger.clearLog();
         socket.emit('timer:reset');
     });
+    (0, _jquery2.default)('#signal').click(function () {
+        socket.emit('timer:signal');
+    });
     (0, _jquery2.default)("#setInfo").click(function () {
         socket.emit('info:set', { text: "newText" + new Date() });
     });

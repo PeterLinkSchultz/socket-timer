@@ -19835,6 +19835,7 @@ var Timer = exports.Timer = function Timer() {
         }
         if (seconds < 10) seconds = '0' + seconds;
         setSeconds();
+        if (seconds === 0 && minuts === 0) stop();
         //timer = setTimeout(tick, 1000);
     }
     function toString() {
@@ -19926,6 +19927,12 @@ function Banner() {
     };
 }
 
+function signal() {
+    var audio = new Audio(); // Создаём новый элемент Audio
+    audio.src = 'signal.mp3'; // Указываем путь к звуку "клика"
+    audio.autoplay = true;
+}
+
 (0, _jquery2.default)(document).ready(function () {
     console.log(window.location);
     var socket = (0, _socket2.default)(window.location.origin, {
@@ -19951,10 +19958,11 @@ function Banner() {
     socket.on('timer:current', function () {
         socket.emit('timer:time', { time: timer.getTime(), started: timer.isStarted() });
     });
+    socket.on('timer:outSignal', function () {
+        signal();
+    });
     socket.on('info:set', function (data) {
-        var audio = new Audio(); // Создаём новый элемент Audio
-        audio.src = 'signal.mp3'; // Указываем путь к звуку "клика"
-        audio.autoplay = true;
+        signal();
         console.log('info: set', data);
         banner.setInfo(data.text);
     });

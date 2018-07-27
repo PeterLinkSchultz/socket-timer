@@ -28,6 +28,10 @@ io.sockets.on('connection', (socket) => {
         });
     });
 
+    socket.on('timer:signal', () => {
+        io.emit('timer:outSignal');
+    });
+
     socket.on('timer:time', (data) => {
        io.emit('timer:setTime', data);
     });

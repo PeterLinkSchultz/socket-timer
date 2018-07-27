@@ -16,6 +16,12 @@ function Banner() {
     }
 }
 
+function signal() {
+    let audio = new Audio(); // Создаём новый элемент Audio
+    audio.src = 'signal.mp3'; // Указываем путь к звуку "клика"
+    audio.autoplay = true;
+}
+
 $(document).ready(function() {
     console.log(window.location);
     let socket = io(window.location.origin, {
@@ -41,10 +47,11 @@ $(document).ready(function() {
    socket.on('timer:current', () =>{
       socket.emit('timer:time', { time: timer.getTime(), started: timer.isStarted() });
    });
+   socket.on('timer:outSignal' , () => {
+       signal();
+   });
    socket.on('info:set', (data) => {
-       let audio = new Audio(); // Создаём новый элемент Audio
-       audio.src = 'signal.mp3'; // Указываем путь к звуку "клика"
-       audio.autoplay = true;
+       signal();
        console.log('info: set', data);
        banner.setInfo(data.text);
    });
