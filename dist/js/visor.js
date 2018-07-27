@@ -19927,9 +19927,9 @@ function Banner() {
     };
 }
 
-function signal() {
+function signal(name) {
     var audio = new Audio(); // Создаём новый элемент Audio
-    audio.src = 'signal.mp3'; // Указываем путь к звуку "клика"
+    audio.src = name; // Указываем путь к звуку "клика"
     audio.autoplay = true;
 }
 
@@ -19959,10 +19959,10 @@ function signal() {
         socket.emit('timer:time', { time: timer.getTime(), started: timer.isStarted() });
     });
     socket.on('timer:outSignal', function () {
-        signal();
+        signal('alarm.mp3');
     });
     socket.on('info:set', function (data) {
-        signal();
+        signal('message.mp3');
         console.log('info: set', data);
         banner.setInfo(data.text);
     });
