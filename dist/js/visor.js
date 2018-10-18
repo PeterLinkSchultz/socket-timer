@@ -36,17 +36,32 @@
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
 /******/ 		}
 /******/ 	};
 /******/
 /******/ 	// define __esModule on exports
 /******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
 /******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -17788,7 +17803,10 @@ Socket.prototype.onclose = function (reason) {
  */
 
 Socket.prototype.onpacket = function (packet) {
-  if (packet.nsp !== this.nsp) return;
+  var sameNamespace = packet.nsp === this.nsp;
+  var rootNamespaceError = packet.type === parser.ERROR && packet.nsp === '/';
+
+  if (!sameNamespace && !rootNamespaceError) return;
 
   switch (packet.type) {
     case parser.CONNECT:
@@ -19790,29 +19808,29 @@ var _jquery2 = _interopRequireDefault(_jquery);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Timer = exports.Timer = function Timer() {
-    var minuts = void 0,
+    var minutes = void 0,
         seconds = void 0,
         started = false,
         divTimer = (0, _jquery2.default)("#timer"),
-        divMinuts = (0, _jquery2.default)("<p>"),
+        divMinutes = (0, _jquery2.default)("<p>"),
         divSeconds = (0, _jquery2.default)("<p>"),
         timer = void 0;
     function init() {
-        divTimer.prepend(divMinuts).append(divSeconds);
-        minuts = 59;
+        divTimer.prepend(divMinutes).append(divSeconds);
+        minutes = 59;
         seconds = 59;
-        setMinuts();
+        setMinutes();
         setSeconds();
     }
     function setTime(time) {
         console.log(time);
-        minuts = time.minuts;
+        minutes = time.minutes;
         seconds = time.seconds;
-        setMinuts();
+        setMinutes();
         setSeconds();
     }
-    function setMinuts() {
-        divMinuts.html(minuts);
+    function setMinutes() {
+        divMinutes.html(minutes);
     }
     function setSeconds() {
         divSeconds.html(seconds);
@@ -19821,13 +19839,13 @@ var Timer = exports.Timer = function Timer() {
         var date = new Date();
         console.log(date.getSeconds(), date.getMilliseconds());
         if (Number(seconds) === 0) {
-            if (Number(minuts) > 0) {
+            if (Number(minutes) > 0) {
                 seconds = 59;
-                minuts--;
-                if (minuts < 10) minuts = '0' + minuts;
+                minutes--;
+                if (minutes < 10) minutes = '0' + minutes;
             } else {
                 seconds = 0;
-                minuts = 0;
+                minutes = 0;
             }
             setMinuts();
         } else {
@@ -19835,17 +19853,15 @@ var Timer = exports.Timer = function Timer() {
         }
         if (seconds < 10) seconds = '0' + seconds;
         setSeconds();
-        if (seconds === 0 && minuts === 0) stop();
-        //timer = setTimeout(tick, 1000);
+        if (seconds === 0 && minutes === 0) stop();
     }
     function toString() {
-        return minuts + ":" + seconds;
+        return minutes + ":" + seconds;
     }
     function start() {
         if (!started) {
             started = true;
             timer = setInterval(tick, 1000);
-            //timer = setTimeout(tick, 1000);
         }
     }
     function isStarted() {
@@ -19861,7 +19877,7 @@ var Timer = exports.Timer = function Timer() {
     }
     function getTime() {
         return {
-            minuts: minuts,
+            minutes: minutes,
             seconds: seconds
         };
     }
@@ -19945,7 +19961,8 @@ function signal(name) {
     socket.on('connect', function (socket) {
         console.log('connected');
     });
-    socket.on('timer:start', function () {
+    socket.on('timer:start', function (data) {
+        timer.setTime(data);
         timer.start();
     });
     socket.on('timer:reset', function () {

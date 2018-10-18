@@ -1,25 +1,25 @@
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var webpack = require("webpack");
-var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-var uglify = new UglifyJsPlugin();
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const webpack = require("webpack");
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const uglify = new UglifyJsPlugin();
 //var autoprefixer = new require('autoprefixer');
-var extractLess = new ExtractTextPlugin({
+const extractLess = new ExtractTextPlugin({
     filename: "../style/[name].css",
     allChunks: true
     //disable: process.env.NODE_ENV === "development"
 });
-var extractCSS = new ExtractTextPlugin({
+const extractCSS = new ExtractTextPlugin({
     filename: "../style/[name].css"
 });
 module.exports = {
     context: __dirname,
     devtool: "source-map",
-    entry: "./src/admin.js",
+    entry: "./src/visor.js",
     mode: "development",
     watch: false,
     output: {
         path: __dirname + "/dist/js",
-        filename: "admin.js"
+        filename: "visor.js"
     },
     node: {
         fs: "empty"

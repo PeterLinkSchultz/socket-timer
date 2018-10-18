@@ -34,7 +34,8 @@ $(document).ready(function() {
    socket.on('connect', (socket) => {
         console.log('connected');
    });
-   socket.on('timer:start', () => {
+   socket.on('timer:start', (data) => {
+       timer.setTime(data);
        timer.start();
    });
    socket.on('timer:reset', () => {

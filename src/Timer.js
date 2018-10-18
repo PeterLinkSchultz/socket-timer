@@ -1,29 +1,29 @@
 import $ from 'jquery';
 
 export const Timer = () => {
-    let minuts,
+    let minutes,
         seconds,
         started = false,
         divTimer = $("#timer"),
-        divMinuts = $("<p>"),
+        divMinutes = $("<p>"),
         divSeconds = $("<p>"),
         timer;
     function init () {
-        divTimer.prepend(divMinuts).append(divSeconds);
-        minuts = 59;
+        divTimer.prepend(divMinutes).append(divSeconds);
+        minutes = 59;
         seconds = 59;
-        setMinuts();
+        setMinutes();
         setSeconds();
     }
     function setTime(time) {
         console.log(time);
-        minuts = time.minuts;
+        minutes = time.minutes;
         seconds = time.seconds;
-        setMinuts();
+        setMinutes();
         setSeconds();
     }
-    function setMinuts () {
-        divMinuts.html(minuts);
+    function setMinutes () {
+        divMinutes.html(minutes);
     }
     function setSeconds () {
         divSeconds.html(seconds);
@@ -32,14 +32,14 @@ export const Timer = () => {
         const date = new Date();
         console.log(date.getSeconds(), date.getMilliseconds());
         if ( Number(seconds) === 0 ) {
-            if ( Number(minuts) > 0 ) {
+            if ( Number(minutes) > 0 ) {
                 seconds = 59;
-                minuts--;
-                if ( minuts < 10)
-                    minuts = '0'+minuts;
+                minutes--;
+                if ( minutes < 10)
+                    minutes = '0'+minutes;
             } else {
                 seconds = 0;
-                minuts = 0;
+                minutes = 0;
             }
             setMinuts();
         } else {
@@ -48,18 +48,16 @@ export const Timer = () => {
         if ( seconds < 10)
             seconds = '0'+seconds;
         setSeconds();
-        if ( seconds === 0 && minuts === 0 )
+        if ( seconds === 0 && minutes === 0 )
             stop();
-        //timer = setTimeout(tick, 1000);
     }
     function toString () {
-        return `${minuts}:${seconds}`;
+        return `${minutes}:${seconds}`;
     }
     function start () {
         if ( !started ) {
             started = true;
             timer = setInterval(tick, 1000);
-            //timer = setTimeout(tick, 1000);
         }
     }
     function isStarted () {
@@ -75,7 +73,7 @@ export const Timer = () => {
     }
     function getTime () {
         return {
-            minuts,
+            minutes,
             seconds
         }
     }

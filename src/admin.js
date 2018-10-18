@@ -204,6 +204,75 @@ function Lang(_root, _lang, _callback, _default) {
 
     }
 }
+function Field() {
+
+    const start = 59;
+    let currentMinutes = 59,
+        currentSeconds = 59,
+        isDirtyM = false,
+        isDirtyS = false;
+
+    const mask = /[0-5]{1}[0-9]{1}/;
+
+    const minutes = $(`<input class="field" id="minutes" maxlength="2" value="${start}"/>`);
+    const delimiter = $('<span class="delimiter">:</span>');
+    const seconds = $(`<input class="field" id="seconds" maxlength="2" value="${start}"/>`);
+
+    minutes.keypress((event) => {
+        isDirtyM = true;
+    });
+    minutes.focus(() => {
+        isDirtyM = false;
+        if (minutes.val()) {
+            minutes.val("");
+        }
+    });
+    minutes.blur(() => {
+        const val = minutes.val();
+
+       if (!isDirtyM || !mask.test(val)) {
+           minutes.val(currentMinutes);
+       } else {
+           currentMinutes = val;
+       }
+    });
+    minutes.keyup(() => {
+        if (minutes.val().length > 1) {
+            minutes.blur();
+            seconds.focus();
+        }
+    });
+
+    seconds.keypress((event) => {
+        isDirtyS = true;
+    });
+    seconds.focus(() => {
+        isDirtyS = false;
+        if (seconds.val()) {
+            seconds.val("");
+        }
+    });
+    seconds.blur(() => {
+        const val = seconds.val();
+
+        if (!isDirtyS || !mask.test(val)) {
+            seconds.val(currentSeconds);
+        } else {
+            currentSeconds = val;
+        }
+    });
+
+    $('#field').append(minutes).append(delimiter).append(seconds);
+
+    return {
+        getTime() {
+            return {
+                minutes: currentMinutes,
+                seconds: currentSeconds
+            };
+        }
+    }
+}
 $(document).ready(function() {
     let socket = io(window.location.origin, {
             port: 8080,
@@ -213,6 +282,8 @@ $(document).ready(function() {
         logger = new Logger($('#logger')),
         tree = new Tree(logger.addLog),
         lang = new Lang($('#lang'), ['sp', 'en'], tree.setData, 'sp');
+
+    const field = Field();
 
     tree.setSocket(socket);
     tree.setTimer(timer);
@@ -242,8 +313,9 @@ $(document).ready(function() {
     });
 
     $("#start").click(function () {
+        timer.setTime(field.getTime());
+        socket.emit('timer:start', timer.getTime());
         timer.start();
-        socket.emit('timer:start');
     });
     $("#stop").click(function () {
         timer.stop();

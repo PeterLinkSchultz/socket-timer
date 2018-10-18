@@ -36,9 +36,9 @@ io.sockets.on('connection', (socket) => {
        io.emit('timer:setTime', data);
     });
 
-    socket.on('timer:start', () => {
+    socket.on('timer:start', (data) => {
         console.log('timer: start');
-        io.emit('timer:start');
+        io.emit('timer:start', data);
     });
 
     socket.on('timer:stop', () => {

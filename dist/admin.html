@@ -6,15 +6,23 @@
 </head>
 <body>
 <div class="container">
-    <div id="lang"></div>
-    <div id="timer" class="timer">
-        <p>:</p>
+    <div class="timer-panel">
+        <div id="lang"></div>
+        <div id="timer" class="timer">
+            <p>:</p>
+        </div>
+        <div id="field">
+        </div>
     </div>
     <div class="timer-control">
-        <a id="signal" href="javascript:void(0)">Signal timer</a>
-        <a id="start" href="javascript:void(0)">Start timer</a>
-        <a id="stop" href="javascript:void(0)">Stop timer</a>
-        <a id="reset" href="javascript:void(0)">Reset timer</a>
+        <div>
+            <a id="stop" href="javascript:void(0)">Stop timer</a>
+            <a id="reset" href="javascript:void(0)">Reset timer</a>
+        </div>
+        <div>
+            <a id="start" href="javascript:void(0)">Start timer</a>
+            <a id="signal" href="javascript:void(0)">Signal timer</a>
+        </div>
     </div>
     <div id="logger"></div>
     <div id="info">
