@@ -41,7 +41,7 @@ export const Timer = () => {
                 seconds = 0;
                 minutes = 0;
             }
-            setMinuts();
+            setMinutes();
         } else {
             seconds--;
         }
