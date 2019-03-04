@@ -213,6 +213,7 @@ body {
 .words {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .word {
   display: flex;
