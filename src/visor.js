@@ -41,9 +41,10 @@ function random(min, max){
     return (Math.random() * (max - min)) + min;
 }
 
-function SplitText(el, words) {
+function SplitText(el, string) {
     const chars = [];
     const $_words = [];
+    const words = string.split(/\s/);
     const updated = words.map((word) => {
         return word.match(/[\w\d]/g);
     });
@@ -69,7 +70,6 @@ function cycleQuotes(string, sel){
     const split = new SplitText(el, string);
     const time = 100 * delay;
 
-    const rev = () => () => this.callback($("new"));
 
     $(split.chars).each(function(i){
         TweenMax.from($(this), time, {
@@ -84,33 +84,35 @@ function cycleQuotes(string, sel){
             repeatDelay: time * 4,
             ease: Power1.easeOut
         });
-
-        rev.bind({
-            callback: (upd) => {
-                $("#current").html(upd).html();
-
-                $(upd).html("");
-                TweenMax.fromTo($(this), time, {
-                    opacity: 1,
-                    x: 0,
-                    y: 0,
-                    z: 0,
-                    // scale: .1,
-                    delay: i * delay,
-                    yoyo: true,
-                    repeat: 0,
-                    ease: Power1.easeOut
-                }, {
-                    opacity: 0,
-                    y: random(-200, 200),
-                    z: random(500, 1000),
-                    yoyo: true,
-                    delay: i * delay,
-                    ease: Power1.easeOut
-                });
-            }
-        });
     });
+
+    const rev = () => () => {
+        const upd = $("#new");
+        $("#current").html(upd.children()).html();
+
+        $(upd).html("");
+
+        $(split.chars).each(function(i){
+            TweenMax.fromTo($(this), time, {
+                opacity: 1,
+                x: 0,
+                y: 0,
+                z: 0,
+                // scale: .1,
+                delay: i * delay,
+                yoyo: true,
+                repeat: 0,
+                ease: Power1.easeOut
+            }, {
+                opacity: 0,
+                y: random(-200, 200),
+                z: random(500, 1000),
+                yoyo: true,
+                delay: i * delay,
+                ease: Power1.easeOut
+            });
+        });
+    };
 
     return rev();
 }
@@ -144,6 +146,7 @@ $(document).ready(function() {
        signal('alarm.mp3');
    });
    let last = null;
+    new SplitText($("#new"), "fuck the system");
    socket.on('info:set', (data) => {
        if (last)
            last();

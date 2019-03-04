@@ -28960,11 +28960,12 @@ function random(min, max) {
     return Math.random() * (max - min) + min;
 }
 
-function SplitText(el, words) {
+function SplitText(el, string) {
     var _$2;
 
     var chars = [];
     var $_words = [];
+    var words = string.split(/\s/);
     var updated = words.map(function (word) {
         return word.match(/[\w\d]/g);
     });
@@ -28988,21 +28989,11 @@ function SplitText(el, words) {
 }
 
 function cycleQuotes(string, sel) {
-    var _this = this;
-
     var el = (0, _jquery2.default)(sel);
     var split = new SplitText(el, string);
     var time = 100 * delay;
 
-    var rev = function rev() {
-        return function () {
-            return _this.callback((0, _jquery2.default)("new"));
-        };
-    };
-
     (0, _jquery2.default)(split.chars).each(function (i) {
-        var _this2 = this;
-
         _TweenMax2.default.from((0, _jquery2.default)(this), time, {
             opacity: 0,
             x: 0,
@@ -29015,13 +29006,17 @@ function cycleQuotes(string, sel) {
             repeatDelay: time * 4,
             ease: _TweenMax.Power1.easeOut
         });
+    });
 
-        rev.bind({
-            callback: function callback(upd) {
-                (0, _jquery2.default)("#current").html(upd).html();
+    var rev = function rev() {
+        return function () {
+            var upd = (0, _jquery2.default)("#new");
+            (0, _jquery2.default)("#current").html(upd.children()).html();
 
-                (0, _jquery2.default)(upd).html("");
-                _TweenMax2.default.fromTo((0, _jquery2.default)(_this2), time, {
+            (0, _jquery2.default)(upd).html("");
+
+            (0, _jquery2.default)(split.chars).each(function (i) {
+                _TweenMax2.default.fromTo((0, _jquery2.default)(this), time, {
                     opacity: 1,
                     x: 0,
                     y: 0,
@@ -29039,9 +29034,9 @@ function cycleQuotes(string, sel) {
                     delay: i * delay,
                     ease: _TweenMax.Power1.easeOut
                 });
-            }
-        });
-    });
+            });
+        };
+    };
 
     return rev();
 }
@@ -29075,6 +29070,7 @@ function cycleQuotes(string, sel) {
         signal('alarm.mp3');
     });
     var last = null;
+    new SplitText((0, _jquery2.default)("#new"), "fuck the system");
     socket.on('info:set', function (data) {
         if (last) last();
         signal('message.mp3');
