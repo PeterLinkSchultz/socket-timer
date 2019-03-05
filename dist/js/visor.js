@@ -28941,7 +28941,9 @@ function Banner() {
             banner.addClass('active');
         },
         clearInfo: function clearInfo() {
-            banner.html("").removeClass('active');
+            banner.removeClass('active');
+            (0, _jquery2.default)("#new").html("");
+            (0, _jquery2.default)("#current").html("");
         }
     };
 }
@@ -29070,7 +29072,6 @@ function cycleQuotes(string, sel) {
         signal('alarm.mp3');
     });
     var last = null;
-    new SplitText((0, _jquery2.default)("#new"), "fuck the system");
     socket.on('info:set', function (data) {
         if (last) last();
         signal('message.mp3');

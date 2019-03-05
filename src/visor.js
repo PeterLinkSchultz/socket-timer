@@ -7,14 +7,16 @@ import TweenMax from "gsap/TweenMax";
 import { Power1 } from "gsap/TweenMax";
 
 function Banner() {
-    let banner = $("#banner");
+    const banner = $("#banner");
 
     return {
         setInfo: (text) => {
             banner.addClass('active');
         },
         clearInfo: () => {
-            banner.html("").removeClass('active');
+            banner.removeClass('active');
+            $("#new").html("");
+            $("#current").html("");
         }
     }
 }
@@ -146,7 +148,6 @@ $(document).ready(function() {
        signal('alarm.mp3');
    });
    let last = null;
-    new SplitText($("#new"), "fuck the system");
    socket.on('info:set', (data) => {
        if (last)
            last();
