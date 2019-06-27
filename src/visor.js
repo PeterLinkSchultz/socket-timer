@@ -67,11 +67,10 @@ function SplitText(el, string) {
     }
 }
 
-function cycleQuotes(string, sel){
+function cycleQuotes(string, sel, img) {
     const el = $(sel);
     const split = new SplitText(el, string);
     const time = 100 * delay;
-
 
     $(split.chars).each(function(i){
         TweenMax.from($(this), time, {
@@ -87,9 +86,67 @@ function cycleQuotes(string, sel){
             ease: Power1.easeOut
         });
     });
+    if (img) {
+        const $img = document.createElement("img");
+
+        if (typeof img === "object") {
+            $img.setAttribute("src", img.src);
+            if (img.id) {
+                $img.setAttribute("id", img.id)
+            }
+            if (img.class) {
+                $img.setAttribute("class", img.className)
+            }
+            if (img.height) {
+                $img.setAttribute("height", img.height)
+            }
+            if (img.width) {
+                $img.setAttribute("width", img.width)
+            }
+        } else {
+            $img.setAttribute("src", img);
+        }
+        el.append($img);
+
+        TweenMax.from($img, time, {
+            opacity: 0,
+            x: 0,
+            y: random(-200, 200),
+            z: random(500, 1000),
+            // scale: .1,
+            delay: delay,
+            yoyo: true,
+            repeat: 0,
+            repeatDelay: time * 4,
+            ease: Power1.easeOut
+        });
+    }
 
     const rev = () => () => {
         const upd = $("#new");
+        const img = upd.find("img");
+
+        if (img.length > 0) {
+            TweenMax.fromTo(img[0], time, {
+                opacity: 1,
+                x: 0,
+                y: 0,
+                z: 0,
+                // scale: .1,
+                delay: delay,
+                yoyo: true,
+                repeat: 0,
+                ease: Power1.easeOut
+            }, {
+                opacity: 0,
+                y: random(-200, 200),
+                z: random(500, 1000),
+                yoyo: true,
+                delay: delay,
+                ease: Power1.easeOut
+            });
+        }
+
         $("#current").html(upd.children()).html();
 
         $(upd).html("");
@@ -153,7 +210,7 @@ $(document).ready(function() {
            last();
        signal('message.mp3');
        banner.setInfo();
-       last = cycleQuotes(data.text, "#new");
+       last = cycleQuotes(data.text, "#new", data.hasOwnProperty("img") ? data.img : null);
        console.log('info: set', data);
    });
 });

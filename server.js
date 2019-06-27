@@ -1,13 +1,13 @@
 let express = require('express');
-let path = require('path');
+let path = require("path");
 let socketio = require('socket.io');
-let fs = require('fs');
+let fs = require("fs");
 
 const users = [];
 
 let app = express();
 
-let server = app.listen(9000, function(){
+let server = app.listen(8080, function(){
     console.log('server listening 8080');
 });
 let io = socketio.listen(server, {
@@ -81,6 +81,15 @@ app.get('/*.mp3', function (req, res) {
 });
 app.get('/*.js', function (req, res) {
     res.sendFile(path.join(__dirname+"/dist/js/"+req.originalUrl));
+});
+app.get('/*.png', function (req, res) {
+    res.sendFile(path.join(__dirname+"/dist/img/"+req.originalUrl));
+});
+app.get('/*.jpg', function (req, res) {
+    res.sendFile(path.join(__dirname+"/dist/img/"+req.originalUrl));
+});
+app.get('/*.jpeg', function (req, res) {
+    res.sendFile(path.join(__dirname+"/dist/img/"+req.originalUrl));
 });
 app.get('/*.css', function (req, res) {
     res.sendFile(path.join(__dirname+"/dist/style/"+req.originalUrl));

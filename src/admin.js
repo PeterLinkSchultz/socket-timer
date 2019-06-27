@@ -41,13 +41,16 @@ function Tree (_addLog) {
     }
     function setSecret (key) {
         let date = new Date();
-        currentSecret = { name: currentObject.tree[key].name, text: currentObject.tree[key].text };
+        currentSecret = { name: currentObject.tree[key].name, text: currentObject.tree[key].text, img: currentObject.tree[key].img };
         current = {
             chain: currentRoom.name+" "+currentObject.name+" "+currentSecret.name,
             text: currentSecret.text,
             timer: _timer.toString(),
             time: `${date.toTimeString().substr(0,9)}`
         };
+        if (currentSecret.img) {
+            current["img"] = currentSecret.img;
+        }
         Confirm( setMessage, current );
     }
     function setMessage (error, success) {

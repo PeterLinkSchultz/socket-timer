@@ -28915,6 +28915,8 @@ var Timer = exports.Timer = function Timer() {
 "use strict";
 
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 var _jquery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
 var _jquery2 = _interopRequireDefault(_jquery);
@@ -28990,7 +28992,7 @@ function SplitText(el, string) {
     };
 }
 
-function cycleQuotes(string, sel) {
+function cycleQuotes(string, sel, img) {
     var el = (0, _jquery2.default)(sel);
     var split = new SplitText(el, string);
     var time = 100 * delay;
@@ -29009,10 +29011,68 @@ function cycleQuotes(string, sel) {
             ease: _TweenMax.Power1.easeOut
         });
     });
+    if (img) {
+        var $img = document.createElement("img");
+
+        if ((typeof img === 'undefined' ? 'undefined' : _typeof(img)) === "object") {
+            $img.setAttribute("src", img.src);
+            if (img.id) {
+                $img.setAttribute("id", img.id);
+            }
+            if (img.class) {
+                $img.setAttribute("class", img.className);
+            }
+            if (img.height) {
+                $img.setAttribute("height", img.height);
+            }
+            if (img.width) {
+                $img.setAttribute("width", img.width);
+            }
+        } else {
+            $img.setAttribute("src", img);
+        }
+        el.append($img);
+
+        _TweenMax2.default.from($img, time, {
+            opacity: 0,
+            x: 0,
+            y: random(-200, 200),
+            z: random(500, 1000),
+            // scale: .1,
+            delay: delay,
+            yoyo: true,
+            repeat: 0,
+            repeatDelay: time * 4,
+            ease: _TweenMax.Power1.easeOut
+        });
+    }
 
     var rev = function rev() {
         return function () {
             var upd = (0, _jquery2.default)("#new");
+            var img = upd.find("img");
+
+            if (img.length > 0) {
+                _TweenMax2.default.fromTo(img[0], time, {
+                    opacity: 1,
+                    x: 0,
+                    y: 0,
+                    z: 0,
+                    // scale: .1,
+                    delay: delay,
+                    yoyo: true,
+                    repeat: 0,
+                    ease: _TweenMax.Power1.easeOut
+                }, {
+                    opacity: 0,
+                    y: random(-200, 200),
+                    z: random(500, 1000),
+                    yoyo: true,
+                    delay: delay,
+                    ease: _TweenMax.Power1.easeOut
+                });
+            }
+
             (0, _jquery2.default)("#current").html(upd.children()).html();
 
             (0, _jquery2.default)(upd).html("");
@@ -29076,7 +29136,7 @@ function cycleQuotes(string, sel) {
         if (last) last();
         signal('message.mp3');
         banner.setInfo();
-        last = cycleQuotes(data.text, "#new");
+        last = cycleQuotes(data.text, "#new", data.hasOwnProperty("img") ? data.img : null);
         console.log('info: set', data);
     });
 });

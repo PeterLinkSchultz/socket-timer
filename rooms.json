@@ -8,7 +8,14 @@
             "secrets": [
               {
                 "name": "1",
-                "text": "Rooms 1 Table Secret 1"
+                "text": "Rooms 1 Table Secret 1",
+                "img": {
+                  "src": "u-suka-10.jpg",
+                  "width": "300px",
+                  "height": "300px",
+                  "id": "img-1",
+                  "class": ""
+                }
               },
               {
                 "name": "2",

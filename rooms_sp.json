@@ -8,7 +8,8 @@
             "secrets": [
               {
                 "name": "1",
-                "text": "Rooms 1 Table Secret 1"
+                "text": "Rooms 1 Table Secret 1",
+                "img": "u-suka-10.jpg"
               },
               {
                 "name": "2",
