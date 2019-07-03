@@ -28965,52 +28965,60 @@ function random(min, max) {
 }
 
 function SplitText(el, string) {
-    var _$2;
+    if (string && string.length > 0) {
+        var _$2;
 
-    var chars = [];
-    var $_words = [];
-    var words = string.split(/\s/);
-    var updated = words.map(function (word) {
-        return word.match(/[\w\d]/g);
-    });
-    updated.forEach(function (item) {
-        var _$;
-
-        var string = [];
-        item.forEach(function (char) {
-            string.push((0, _jquery2.default)('<div>' + char + '</div>'));
+        var chars = [];
+        var $_words = [];
+        var words = string.split(/\s/);
+        var updated = words.filter(function (word) {
+            return word.length > 0;
+        }).map(function (word) {
+            return word.match(/./g);
         });
-        string.push((0, _jquery2.default)('<div>&nbsp;&nbsp;</div>'));
-        $_words.push((_$ = (0, _jquery2.default)("<div class='word'>")).append.apply(_$, string));
-        chars.push.apply(chars, string);
-    });
+        updated.forEach(function (item) {
+            var _$;
 
-    (0, _jquery2.default)(el).html("").append((_$2 = (0, _jquery2.default)('<div class="words">')).append.apply(_$2, $_words));
+            var string = [];
+            item.forEach(function (char) {
+                string.push((0, _jquery2.default)('<div>' + char + '</div>'));
+            });
+            string.push((0, _jquery2.default)('<div>&nbsp;&nbsp;</div>'));
+            $_words.push((_$ = (0, _jquery2.default)("<div class='word'>")).append.apply(_$, string));
+            chars.push.apply(chars, string);
+        });
 
-    return {
-        chars: chars
-    };
+        (0, _jquery2.default)(el).html("").append((_$2 = (0, _jquery2.default)('<div class="words">')).append.apply(_$2, $_words));
+
+        return {
+            chars: chars
+        };
+    }
+
+    return {};
 }
 
 function cycleQuotes(string, sel, img) {
     var el = (0, _jquery2.default)(sel);
-    var split = new SplitText(el, string);
+    var split = SplitText(el, string);
     var time = 100 * delay;
 
-    (0, _jquery2.default)(split.chars).each(function (i) {
-        _TweenMax2.default.from((0, _jquery2.default)(this), time, {
-            opacity: 0,
-            x: 0,
-            y: random(-200, 200),
-            z: random(500, 1000),
-            // scale: .1,
-            delay: i * delay,
-            yoyo: true,
-            repeat: 0,
-            repeatDelay: time * 4,
-            ease: _TweenMax.Power1.easeOut
+    if (split.hasOwnProperty("chars")) {
+        (0, _jquery2.default)(split.chars).each(function (i) {
+            _TweenMax2.default.from((0, _jquery2.default)(this), time, {
+                opacity: 0,
+                x: 0,
+                y: random(-200, 200),
+                z: random(500, 1000),
+                // scale: .1,
+                delay: i * delay,
+                yoyo: true,
+                repeat: 0,
+                repeatDelay: time * 4,
+                ease: _TweenMax.Power1.easeOut
+            });
         });
-    });
+    }
     if (img) {
         var $img = document.createElement("img");
 
@@ -29077,26 +29085,28 @@ function cycleQuotes(string, sel, img) {
 
             (0, _jquery2.default)(upd).html("");
 
-            (0, _jquery2.default)(split.chars).each(function (i) {
-                _TweenMax2.default.fromTo((0, _jquery2.default)(this), time, {
-                    opacity: 1,
-                    x: 0,
-                    y: 0,
-                    z: 0,
-                    // scale: .1,
-                    delay: i * delay,
-                    yoyo: true,
-                    repeat: 0,
-                    ease: _TweenMax.Power1.easeOut
-                }, {
-                    opacity: 0,
-                    y: random(-200, 200),
-                    z: random(500, 1000),
-                    yoyo: true,
-                    delay: i * delay,
-                    ease: _TweenMax.Power1.easeOut
+            if (split.hasOwnProperty("chars")) {
+                (0, _jquery2.default)(split.chars).each(function (i) {
+                    _TweenMax2.default.fromTo((0, _jquery2.default)(this), time, {
+                        opacity: 1,
+                        x: 0,
+                        y: 0,
+                        z: 0,
+                        // scale: .1,
+                        delay: i * delay,
+                        yoyo: true,
+                        repeat: 0,
+                        ease: _TweenMax.Power1.easeOut
+                    }, {
+                        opacity: 0,
+                        y: random(-200, 200),
+                        z: random(500, 1000),
+                        yoyo: true,
+                        delay: i * delay,
+                        ease: _TweenMax.Power1.easeOut
+                    });
                 });
-            });
+            }
         };
     };
 

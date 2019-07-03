@@ -19944,7 +19944,6 @@ function Tree(_addLog) {
     }
     function loadData(_data, lang) {
         data[lang] = _data;
-        console.log(_data);
         return this;
     }
     function setRoom(key) {
@@ -19958,7 +19957,6 @@ function Tree(_addLog) {
     function setSecret(key) {
         var date = new Date();
         currentSecret = { name: currentObject.tree[key].name, text: currentObject.tree[key].text, img: currentObject.tree[key].img };
-        console.log(currentSecret, currentObject.tree[key]);
         current = {
             chain: currentRoom.name + " " + currentObject.name + " " + currentSecret.name,
             text: currentSecret.text,
@@ -20026,7 +20024,7 @@ function Room(data, parent, callback, key) {
 function Secret(data, parent, callback, key) {
     var _data = data,
         _parent = parent,
-        room = (0, _jquery2.default)('<li><p>' + _data.name + '</p><p>' + _data.text + '</p></li>').click(function () {
+        room = (0, _jquery2.default)('<li><p>' + _data.name + '</p><p>' + (_data.text || "") + '</p></li>').click(function () {
         callback(key);
     });
 

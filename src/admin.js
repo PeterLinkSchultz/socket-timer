@@ -107,7 +107,7 @@ function Room (data, parent, callback, key) {
 function Secret (data, parent, callback, key) {
     let _data = data,
         _parent = parent,
-        room = $(`<li><p>${_data.name}</p><p>${_data.text}</p></li>`).click( () => { callback(key) });
+        room = $(`<li><p>${_data.name}</p><p>${_data.text || ""}</p></li>`).click( () => { callback(key) });
 
     function render () {
         _parent.append(room);
