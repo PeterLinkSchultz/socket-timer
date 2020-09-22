@@ -14,12 +14,12 @@ const extractCSS = new ExtractTextPlugin({
 module.exports = {
     context: __dirname,
     devtool: "source-map",
-    entry: "./src/visor.js",
+    entry: "./src/admin.js",
     mode: "development",
     watch: false,
     output: {
         path: __dirname + "/dist/js",
-        filename: "visor.js"
+        filename: "admin.js"
     },
     node: {
         fs: "empty"

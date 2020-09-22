@@ -112,3 +112,6 @@ app.get('/data', function (req, res) {
 app.get('/data:sp', function (req, res) {
     res.sendFile(path.join(__dirname+'/rooms_sp.json'));
 });
+app.get('/data:cat', function (req, res) {
+    res.sendFile(path.join(__dirname+'/rooms_cat.json'));
+});

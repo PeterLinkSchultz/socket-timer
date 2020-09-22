@@ -20200,7 +20200,7 @@ function Field() {
         timer = new _Timer.Timer(),
         logger = new Logger((0, _jquery2.default)('#logger')),
         tree = new Tree(logger.addLog),
-        lang = new Lang((0, _jquery2.default)('#lang'), ['sp', 'en'], tree.setData, 'sp');
+        lang = new Lang((0, _jquery2.default)('#lang'), ['sp', 'en', 'cat'], tree.setData, 'sp');
 
     var field = Field();
 
@@ -20213,6 +20213,10 @@ function Field() {
     _jquery2.default.getJSON('/data:sp', function (data) {
         tree.loadData(data.rooms, 'sp');
         tree.setData('sp');
+    });
+    _jquery2.default.getJSON('/data:cat', function (data) {
+        tree.loadData(data.rooms, 'cat');
+        tree.setData('cat');
     });
 
     socket.emit('admin:connect');

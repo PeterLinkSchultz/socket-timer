@@ -284,7 +284,7 @@ $(document).ready(function() {
         timer = new Timer(),
         logger = new Logger($('#logger')),
         tree = new Tree(logger.addLog),
-        lang = new Lang($('#lang'), ['sp', 'en'], tree.setData, 'sp');
+        lang = new Lang($('#lang'), ['sp', 'en', 'cat'], tree.setData, 'sp');
 
     const field = Field();
 
@@ -297,6 +297,10 @@ $(document).ready(function() {
     $.getJSON('/data:sp', (data) => {
         tree.loadData(data.rooms, 'sp');
         tree.setData('sp');
+    });
+    $.getJSON('/data:cat', (data) => {
+        tree.loadData(data.rooms, 'cat');
+        tree.setData('cat');
     });
 
     socket.emit('admin:connect');
