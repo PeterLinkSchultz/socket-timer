@@ -294,11 +294,11 @@ $(document).ready(function() {
     $.getJSON('/data', (data) => {
        tree.loadData(data.rooms, 'en');
     });
-    $.getJSON('/data:sp', (data) => {
+    $.getJSON('/data/sp', (data) => {
         tree.loadData(data.rooms, 'sp');
         tree.setData('sp');
     });
-    $.getJSON('/data:cat', (data) => {
+    $.getJSON('/data/cat', (data) => {
         tree.loadData(data.rooms, 'cat');
     });
 

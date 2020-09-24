@@ -109,9 +109,9 @@ app.get('/admin', function (req, res) {
 app.get('/data', function (req, res) {
     res.sendFile(path.join(__dirname+'/rooms.json'));
 });
-app.get('/data:sp', function (req, res) {
+app.get('/data/sp', function (req, res) {
     res.sendFile(path.join(__dirname+'/rooms_sp.json'));
 });
-app.get('/data:cat', function (req, res) {
+app.get('/data/cat', function (req, res) {
     res.sendFile(path.join(__dirname+'/rooms_cat.json'));
 });

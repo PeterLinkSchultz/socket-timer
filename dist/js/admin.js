@@ -20210,13 +20210,12 @@ function Field() {
     _jquery2.default.getJSON('/data', function (data) {
         tree.loadData(data.rooms, 'en');
     });
-    _jquery2.default.getJSON('/data:sp', function (data) {
+    _jquery2.default.getJSON('/data/sp', function (data) {
         tree.loadData(data.rooms, 'sp');
         tree.setData('sp');
     });
-    _jquery2.default.getJSON('/data:cat', function (data) {
+    _jquery2.default.getJSON('/data/cat', function (data) {
         tree.loadData(data.rooms, 'cat');
-        tree.setData('cat');
     });
 
     socket.emit('admin:connect');
