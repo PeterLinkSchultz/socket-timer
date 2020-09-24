@@ -300,7 +300,6 @@ $(document).ready(function() {
     });
     $.getJSON('/data:cat', (data) => {
         tree.loadData(data.rooms, 'cat');
-        tree.setData('cat');
     });
 
     socket.emit('admin:connect');

@@ -33,12 +33,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e0b54690-a836-49ad-8018-f3851db69d6d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/rooms_cat.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,8 +116,17 @@
       <workItem from="1539956118201" duration="996000" />
       <workItem from="1540218617286" duration="227000" />
       <workItem from="1551424823041" duration="8457000" />
-      <workItem from="1600788384603" duration="353000" />
+      <workItem from="1600788384603" duration="584000" />
+      <workItem from="1600932883410" duration="190000" />
     </task>
+    <task id="LOCAL-00001" summary="Add cat language.">
+      <created>1600788965595</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1600788965595</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,24 +142,33 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add cat language." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add cat language." />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1600788393742">
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1600788977343">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1600788393742" />
-    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1600788393740">
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1600788977343" />
+    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1600788977341">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1600788393740" />
-    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1600788393738">
+    <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1600788977341" />
+    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1600788977339">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1600788393738" />
-    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1600788393741">
+    <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1600788977339" />
+    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1600788977342">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1600788393741" />
+    <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1600788977342" />
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1600788970815">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1600788970815" />
   </component>
   <component name="masterDetails">
     <states>
