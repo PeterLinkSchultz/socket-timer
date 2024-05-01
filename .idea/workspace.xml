@@ -35,24 +35,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0b54690-a836-49ad-8018-f3851db69d6d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/lang/en.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/fr.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/it.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lang/ru.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/js/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/js/admin.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/js/admin.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rooms.json" beforeDir="false" afterPath="$PROJECT_DIR$/lang/de.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rooms_cat.json" beforeDir="false" afterPath="$PROJECT_DIR$/lang/cat.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rooms_sp.json" beforeDir="false" afterPath="$PROJECT_DIR$/lang/sp.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/session.txt" beforeDir="false" afterPath="$PROJECT_DIR$/session.txt" afterDir="false" />
+    <list default="true" id="e0b54690-a836-49ad-8018-f3851db69d6d" name="Default" comment="added ru, fr, it, de">
+      <change beforePath="$PROJECT_DIR$/lang/de.json" beforeDir="false" afterPath="$PROJECT_DIR$/lang/ge.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +110,7 @@
       <workItem from="1551424823041" duration="8457000" />
       <workItem from="1600788384603" duration="584000" />
       <workItem from="1600932883410" duration="190000" />
-      <workItem from="1714583820559" duration="2073000" />
+      <workItem from="1714583820559" duration="2160000" />
     </task>
     <task id="LOCAL-00001" summary="Add cat language.">
       <created>1600788965595</created>
@@ -134,7 +119,15 @@
       <option name="project" value="LOCAL" />
       <updated>1600788965595</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added ru, fr, it, de">
+      <option name="closed" value="true" />
+      <created>1714585950807</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1714585950807</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,7 +146,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add cat language." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add cat language." />
+    <MESSAGE value="added ru, fr, it, de" />
+    <option name="LAST_COMMIT_MESSAGE" value="added ru, fr, it, de" />
   </component>
   <component name="masterDetails">
     <states>
