@@ -1,0 +1,73 @@
+{
+  "rooms": [
+      {
+        "name": "Rooms 1",
+        "objects": [
+          {
+            "name": "Table 1",
+            "secrets": [
+              {
+                "name": "1",
+                "text": "Rooms 1 Table Secret 1",
+                "img": {
+                  "src": "u-suka-10.jpg",
+                  "width": "300px",
+                  "height": "300px",
+                  "id": "img-1",
+                  "class": ""
+                }
+              },
+              {
+                "name": "2",
+                "text": "Rooms 1 Table Secret 2"
+              }
+            ]
+          },
+          {
+            "name": "Box 1",
+            "secrets": [
+              {
+                "name": "1",
+                "text": "Rooms 1 Box Secret 1"
+              },
+              {
+                "name": "2",
+                "text": "Rooms 1 Box Secret 2"
+              }
+            ]
+          }
+        ]
+      },
+    {
+      "name": "Rooms 2",
+      "objects": [
+        {
+          "name": "Table 2",
+          "secrets": [
+            {
+              "name": "1",
+              "text": "Rooms 2 Table Secret 1"
+            },
+            {
+              "name": "2",
+              "text": "Rooms 2 Table Secret 2"
+            }
+          ]
+        },
+        {
+          "name": "Box 2",
+          "secrets": [
+            {
+              "name": "1",
+              "text": "Rooms 2 Box Secret 1"
+            },
+            {
+              "name": "2",
+              "text": "Rooms 2 Box  Secret 2"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

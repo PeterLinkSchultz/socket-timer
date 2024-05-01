@@ -278,20 +278,20 @@ function Field() {
 }
 $(document).ready(function() {
     let socket = io(window.location.origin, {
-            port: 8080,
+            port: 8081,
             autoConnect: true
         }),
         timer = new Timer(),
         logger = new Logger($('#logger')),
         tree = new Tree(logger.addLog),
-        lang = new Lang($('#lang'), ['sp', 'en', 'cat'], tree.setData, 'sp');
+        lang = new Lang($('#lang'), ['sp', 'en', 'cat', 'ru', 'fr', 'de', 'it'], tree.setData, 'sp');
 
     const field = Field();
 
     tree.setSocket(socket);
     tree.setTimer(timer);
 
-    $.getJSON('/data', (data) => {
+    $.getJSON('/data/en', (data) => {
        tree.loadData(data.rooms, 'en');
     });
     $.getJSON('/data/sp', (data) => {
@@ -300,6 +300,18 @@ $(document).ready(function() {
     });
     $.getJSON('/data/cat', (data) => {
         tree.loadData(data.rooms, 'cat');
+    });
+    $.getJSON('/data/ru', (data) => {
+        tree.loadData(data.rooms, 'ru');
+    });
+    $.getJSON('/data/fr', (data) => {
+        tree.loadData(data.rooms, 'fr');
+    });
+    $.getJSON('/data/it', (data) => {
+        tree.loadData(data.rooms, 'it');
+    });
+    $.getJSON('/data/de', (data) => {
+        tree.loadData(data.rooms, 'de');
     });
 
     socket.emit('admin:connect');

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -33,8 +36,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e0b54690-a836-49ad-8018-f3851db69d6d" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/lang/en.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lang/fr.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lang/it.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lang/ru.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/js/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/js/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/js/admin.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/js/admin.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rooms.json" beforeDir="false" afterPath="$PROJECT_DIR$/lang/de.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rooms_cat.json" beforeDir="false" afterPath="$PROJECT_DIR$/lang/cat.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rooms_sp.json" beforeDir="false" afterPath="$PROJECT_DIR$/lang/sp.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/session.txt" beforeDir="false" afterPath="$PROJECT_DIR$/session.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,12 +70,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JsFlowSettings">
-    <service-enabled>true</service-enabled>
-    <exe-path />
-    <other-services-enabled>true</other-services-enabled>
-    <auto-save>true</auto-save>
-  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="1912" />
     <option name="y" value="-8" />
@@ -69,38 +84,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.prettier" value="true" />
-    <property name="node.js.detected.package.standard" value="true" />
-    <property name="node.js.detected.package.stylelint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.jscs" value="project" />
-    <property name="node.js.path.for.package.prettier" value="project" />
-    <property name="node.js.path.for.package.standard" value="project" />
-    <property name="node.js.path.for.package.stylelint" value="project" />
-    <property name="node.js.selected.package.eslint" value="C:\Projects\socket-timer\node_modules\eslint" />
-    <property name="node.js.selected.package.jscs" value="" />
-    <property name="node.js.selected.package.prettier" value="" />
-    <property name="node.js.selected.package.standard" value="C:\Projects\socket-timer\node_modules\eslint" />
-    <property name="node.js.selected.package.stylelint" value="C:/Users/Professional/AppData/Roaming/npm/node_modules/stylelint" />
-    <property name="nodejs_interpreter_path" value="node" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/Users/p.zasypkin/WebstormProjects/socket-timer/rooms",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/rooms" />
       <recent name="$PROJECT_DIR$" />
       <recent name="C:\Projects\socket-timer\dist\js" />
       <recent name="C:\Projects\socket-timer" />
       <recent name="C:\Projects\socket-timer\dist" />
     </key>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -118,6 +125,7 @@
       <workItem from="1551424823041" duration="8457000" />
       <workItem from="1600788384603" duration="584000" />
       <workItem from="1600932883410" duration="190000" />
+      <workItem from="1714583820559" duration="2073000" />
     </task>
     <task id="LOCAL-00001" summary="Add cat language.">
       <created>1600788965595</created>
@@ -130,7 +138,7 @@
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -142,33 +150,10 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add cat language." />
     <option name="LAST_COMMIT_MESSAGE" value="Add cat language." />
-  </component>
-  <component name="WindowStateProjectService">
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom" timestamp="1600788977343">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1600788977343" />
-    <state width="1398" height="245" key="GridCell.Tab.0.center" timestamp="1600788977341">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1600788977341" />
-    <state width="1398" height="245" key="GridCell.Tab.0.left" timestamp="1600788977339">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1600788977339" />
-    <state width="1398" height="245" key="GridCell.Tab.0.right" timestamp="1600788977342">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1600788977342" />
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2" timestamp="1600788970815">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="320" y="190" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1600788970815" />
   </component>
   <component name="masterDetails">
     <states>

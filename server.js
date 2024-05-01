@@ -7,7 +7,7 @@ const users = [];
 
 let app = express();
 
-let server = app.listen(8080, function(){
+let server = app.listen(8081, function(){
     console.log('server listening 8080');
 });
 let io = socketio.listen(server, {
@@ -106,12 +106,8 @@ app.get('/index', function (req, res) {
 app.get('/admin', function (req, res) {
     res.sendFile(path.join(__dirname+'/dist/admin.html'));
 });
-app.get('/data', function (req, res) {
-    res.sendFile(path.join(__dirname+'/rooms.json'));
-});
-app.get('/data/sp', function (req, res) {
-    res.sendFile(path.join(__dirname+'/rooms_sp.json'));
-});
-app.get('/data/cat', function (req, res) {
-    res.sendFile(path.join(__dirname+'/rooms_cat.json'));
+app.get('/data/*', function (req, res) {
+    const lang = req.params[0]
+
+    res.sendFile(path.join(`${__dirname}/lang/${lang}.json`));
 });
